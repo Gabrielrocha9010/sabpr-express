@@ -382,12 +382,6 @@ hr{
     color: #fff;
 }
 
-
-
-
-
-
-
 footer{
     position: relative;
     height: 22vh;
@@ -500,3 +494,622 @@ footer::before {
     background: red;
     border-radius: 10px;
   } 
+
+
+.link-carrinho{
+    position: relative;
+    display: inline-block;
+}
+
+#badge-carrinho, #badge-pedidos{
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 11px;
+    background-color: rgb(255, 30, 0);
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 22px;
+    text-align: center;
+    pointer-events: none;
+}
+
+#badge-carrinho[hidden], #badge-pedidos[hidden]{
+    display: none;
+}
+
+.card-destaque{
+    outline: 3px solid red;
+    box-shadow: 0 0 20px red;
+    transform: scale(1.03);
+    transition: 0.3s ease-in-out;
+}
+
+#msg-busca{
+    position: fixed;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: var(--cor-cards);
+    color: red;
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: "Poppins", sans-serif;
+}
+
+#msg-busca[hidden]{
+    display: none;
+}
+
+.modal-tamanho{
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-tamanho.oculto{
+    display: none;
+}
+
+.modal-tamanho-conteudo{
+    background-color: var(--cor-cards);
+    color: var(--cor-text);
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 24px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+.modal-tamanho-conteudo h3{
+    color: red;
+}
+
+.opcao-tamanho{
+    background-color: transparent;
+    color: var(--cor-text);
+    border: 2px solid red;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+}
+
+.opcao-tamanho:hover{
+    background-color: red;
+    color: #fdfbf7;
+}
+
+.opcao-cancelar{
+    border-color: gray;
+}
+
+.opcao-cancelar:hover{
+    background-color: gray;
+}
+
+/* ===== RESPONSIVO: CABEÇALHO E RODAPÉ (tablet) ===== */
+@media (max-width: 1024px){
+    header{
+        height: auto;
+        position: relative;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    #div-logo{
+        width: 200px;
+        height: 110px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    header ul{
+        margin-top: 0;
+        gap: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #div-header{
+        width: auto;
+        margin-top: 0;
+    }
+    #troca{
+        margin: 0;
+    }
+    footer{
+        height: auto;
+        padding: 30px 20px;
+        background-size: cover;
+    }
+    #div-centro{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px 20px;
+    }
+    #esquerda-footer{
+        grid-column: 1 / -1;
+    }
+    #navegação, #contato{
+        margin: 0;
+    }
+    #div-logo2{
+        margin-left: 0;
+    }
+}
+
+/* ===== RESPONSIVO: PRODUTOS (tablet) ===== */
+@media (max-width: 1024px){
+    #produtos-1{
+        flex-direction: column;
+    }
+    #div-esquerda{
+        position: relative;
+        left: auto;
+        width: 100%;
+        height: auto;
+        padding: 20px 20px 0;
+    }
+    .pesquisar{
+        position: relative;
+        margin-left: 0;
+        padding-top: 0;
+    }
+    #barra-pesquisa{
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        padding: 14px 16px 14px 50px;
+    }
+    #svg-lup{
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    #botoes-card{
+        height: auto;
+        flex-wrap: wrap;
+        margin-top: 0;
+        padding: 10px 0;
+    }
+    #a-card1, #a-card2, #a-card3{
+        width: 30%;
+        height: auto;
+        padding: 8px 0;
+    }
+    #video1{
+        width: 100%;
+        margin-left: 0;
+    }
+    hr{
+        display: none;
+    }
+    #div-direita{
+        width: 100%;
+        margin-left: 0;
+        padding: 0 20px 20px;
+    }
+    .cards-direita{
+        height: auto;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 10px 0 20px;
+        align-items: stretch;
+    }
+    .cards-di{
+        width: calc(50% - 10px);
+        height: auto;
+    }
+    #card-ham1 img, #card-ham2 img{
+        height: 220px;
+        object-fit: cover;
+    }
+    .botton-add{
+        height: auto;
+        padding: 10px 0;
+    }
+}
+
+/* ===== RESPONSIVO: CABEÇALHO, RODAPÉ E PRODUTOS (celular) ===== */
+@media (max-width: 768px){
+    header{
+        padding: 12px 15px;
+        gap: 12px;
+    }
+    #div-logo{
+        width: 150px;
+        height: 80px;
+    }
+    nav{
+        width: 100%;
+    }
+    header li{
+        font-size: 12px;
+    }
+    header ul{
+        gap: 12px 20px;
+    }
+    #div-header{
+        gap: 10px;
+    }
+    #entrar1{
+        width: 70px;
+        font-size: 11px;
+    }
+    #cadastrar1{
+        width: 95px;
+        font-size: 11px;
+    }
+    #svg-carrinho{
+        width: 40px;
+    }
+    #troca{
+        width: 40px;
+        height: 36px;
+    }
+    #div-esquerda{
+        padding: 16px 12px 0;
+    }
+    #div-direita{
+        padding: 0 12px 20px;
+    }
+    .cards-direita{
+        gap: 16px;
+    }
+    .cards-di{
+        width: calc(50% - 8px);
+    }
+    #card-ham1 img, #card-ham2 img{
+        height: 130px;
+    }
+    #card-ham1 h3, #card-ham2 h3{
+        font-size: 14px;
+    }
+    #card-ham1 p, #card-ham2 p{
+        font-size: 12px;
+    }
+    #card-ham1 h4, #card-ham2 h4{
+        font-size: 13px;
+    }
+    .botton-add{
+        font-size: 12px;
+    }
+    #a-card1, #a-card2, #a-card3{
+        font-size: 12px;
+    }
+    #div-centro{
+        grid-template-columns: 1fr;
+    }
+    #div-logo2{
+        width: 200px;
+    }
+}
+
+/* ===== BEBIDAS: IMAGEM INTEIRA SEM CORTE ===== */
+#card-ham1 img[src*="coca"],
+#card-ham1 img[src*="pepsi"],
+#card-ham1 img[src*="SUCO"],
+#card-ham1 img[src*="agua"],
+#card-ham2 img[src*="coca"],
+#card-ham2 img[src*="pepsi"],
+#card-ham2 img[src*="SUCO"],
+#card-ham2 img[src*="agua"]{
+    height: 240px;
+    object-fit: contain;
+    background-color: transparent;
+}
+
+#card-ham2 img#kskskskkss{
+    height: 240px;
+    object-fit: contain;
+}
+
+/* ===== MENU HAMBURGUER E BUSCA DO CABEÇALHO (ate 1024px) ===== */
+.busca-header{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.busca-header #svg-lup{
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    fill: gray;
+    pointer-events: none;
+}
+
+.busca-header #barra-pesquisa{
+    margin-top: 0;
+}
+
+.btn-menu{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 40px;
+    padding: 8px;
+    background-color: transparent;
+    border: 1px solid var(--cor-border);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-menu span{
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background-color: red;
+    transition: 0.3s ease;
+}
+
+.btn-menu.ativo span:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+}
+
+.btn-menu.ativo span:nth-child(2){
+    opacity: 0;
+}
+
+.btn-menu.ativo span:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+#troca{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px 22px;
+}
+
+@media (max-width: 1024px){
+    header{
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 12px 15px;
+        padding: 12px 20px;
+    }
+
+    #div-logo{
+        width: 180px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .btn-menu{
+        display: flex;
+    }
+
+    header nav{
+        display: none;
+        width: 100%;
+    }
+
+    header nav.aberto{
+        display: block;
+    }
+
+    header nav ul{
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin-top: 0;
+        padding: 10px 0;
+    }
+
+    header li{
+        font-size: 14px;
+    }
+
+    .busca-header{
+        width: 100%;
+        max-width: 360px;
+        order: 10;
+    }
+
+    .busca-header #barra-pesquisa{
+        width: 100%;
+        height: auto;
+        padding: 12px 16px 12px 46px;
+    }
+
+    #div-header{
+        width: auto;
+        margin-top: 0;
+        order: 9;
+    }
+
+    #troca{
+        margin: 0;
+        order: 8;
+    }
+
+    #svg-carrinho{
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
+    footer{
+        height: auto;
+        padding: 30px 20px;
+        background-color: var(--cor-fundo);
+        background-size: contain;
+        background-position: top center;
+    }
+
+    #div-centro{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px 20px;
+    }
+
+    #esquerda-footer{
+        grid-column: 1 / -1;
+    }
+
+    #navegação, #contato{
+        margin: 0;
+    }
+
+    #div-logo2{
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px){
+    #div-centro{
+        grid-template-columns: 1fr;
+    }
+
+    #div-logo2{
+        width: 200px;
+    }
+
+    #div-logo{
+        width: 150px;
+        height: 84px;
+    }
+}
+
+/* ===== RODAPE RECOLHIVEL (celular) ===== */
+/* Em telas pequenas, NAVEGACAO e CONTATO abrem e fecham com uma seta */
+.footer-titulo-toggle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.footer-titulo-toggle .seta{
+    display: none;
+}
+
+@media (max-width: 768px){
+    footer{
+        background-image: none;
+        background-color: var(--cor-fundo);
+        border-top: 2px solid red;
+    }
+
+    .footer-titulo-toggle .seta{
+        display: block;
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        fill: red;
+        transition: transform 0.3s ease;
+    }
+
+    .footer-secao.aberto .footer-titulo-toggle .seta{
+        transform: rotate(180deg);
+    }
+
+    .footer-secao .ul-footer > li,
+    .footer-secao .ul-footer > #tracinho{
+        display: none;
+    }
+
+    .footer-secao.aberto .ul-footer > li,
+    .footer-secao.aberto .ul-footer > #tracinho{
+        display: block;
+    }
+}
+
+/* ===== CABECALHO DA PRODUTO EM TELAS ACIMA DE 1024px ===== */
+/* Logo inteiro, busca alinhada e todos os itens centralizados na mesma linha */
+@media (min-width: 1025px){
+    header{
+        height: auto;
+        min-height: 150px;
+        padding: 15px 30px;
+        align-items: center;
+        gap: clamp(10px, 1.5vw, 40px);
+    }
+
+    header > #div-logo{
+        flex-shrink: 0;
+        width: clamp(170px, 17vw, 340px);
+        height: clamp(70px, 8vw, 130px);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: visible;
+    }
+
+    header ul{
+        margin-top: 0;
+        gap: clamp(14px, 2.4vw, 50px);
+    }
+
+    #div-header,
+    #troca{
+        margin-top: 0;
+        margin-right: 0;
+    }
+
+    #svg-carrinho{
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
+    .pesquisar{
+        position: static;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    #barra-pesquisa{
+        margin-top: 5%;
+        width: 100%;
+        height: 44px;
+        padding: 0 16px 0 46px;
+        line-height: 44px;
+    }
+
+    .pesquisar{
+        position: relative;
+        width: 90%;
+        height: 44px;
+        margin-left: 5%;
+        padding-top: 0;
+    }
+
+    .pesquisar #svg-lup{
+        position: absolute;
+        left: 30px;
+        top: 75%;
+        transform: translateY(-50%);
+        margin-top: 0;
+        width: 22px;
+        height: 22px;
+        pointer-events: none;
+    }
+}

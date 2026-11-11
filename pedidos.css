@@ -171,15 +171,6 @@ header{
  margin-top: 5%;
 }
 
-
-
-
-
-
-
-
-
-
 footer{
     position: relative;
     height: 22vh;
@@ -290,3 +281,701 @@ footer::before {
     background: red;
     border-radius: 10px;
   }  
+
+main{
+    min-height: 58vh;
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+#lista-pedidos{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#titulo-pedidos{
+    color: red;
+    font-size: 25px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+#tracinho-pedidos{
+    background-color: red;
+    height: 2px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.card-pedido{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 25px 30px;
+    border: 1px solid var(--cor-border);
+    border-radius: 15px;
+    box-shadow: 0px 2px 15px 0px var(--cor-border);
+    color: var(--cor-text);
+    font-family: "Poppins", sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.card-pedido:hover{
+    transform: scale(1.01);
+}
+
+.pedido-topo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pedido-numero{
+    color: red;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.pedido-data{
+    font-size: 12px;
+    color: gray;
+}
+
+.pedido-itens{
+    list-style: none;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.pedido-rodape{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid var(--cor-border);
+}
+
+.pedido-total{
+    color: var(--cor-text-amarelo);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.status{
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.status-entregue{
+    background-color: #2e7d32;
+}
+
+.status-andamento{
+    background-color: #f9a825;
+    color: #000;
+}
+
+.status-cancelado{
+    background-color: rgb(255, 30, 0);
+}
+
+.btn-detalhes{
+    padding: 10px 18px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(255, 30, 0);
+    color: #fff;
+    font-family: "Idiqlat", serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: ease all 0.3s;
+}
+
+.btn-detalhes:hover{
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px){
+    #lista-pedidos{
+        width: 100%;
+    }
+}
+
+.filtros-pedidos{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn-filtro{
+    padding: 8px 18px;
+    border: 1px solid var(--cor-border);
+    border-radius: 15px;
+    background-color: transparent;
+    color: var(--cor-text);
+    font-family: "Idiqlat", serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: ease all 0.3s;
+}
+
+.btn-filtro:hover,
+.btn-filtro-ativo{
+    background-color: rgb(255, 30, 0);
+    border-color: rgb(255, 30, 0);
+    color: #fff;
+}
+
+.resumo-pedidos{
+    display: flex;
+    gap: 20px;
+}
+
+.resumo-item{
+    flex: 1;
+    padding: 20px;
+    border: 1px solid var(--cor-border);
+    border-radius: 15px;
+    color: var(--cor-text);
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+.resumo-valor{
+    display: block;
+    color: var(--cor-text-amarelo);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.resumo-rotulo{
+    font-size: 12px;
+    color: gray;
+}
+
+.oculto{
+    display: none !important;
+}
+
+.mensagem-vazia{
+    color: gray;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    text-align: center;
+    padding: 20px;
+}
+
+.modal-pedido{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+}
+
+.modal-conteudo{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border: 1px solid var(--cor-border);
+    border-radius: 15px;
+    background-color: var(--cor-fundo);
+    box-shadow: 0px 2px 20px 0px var(--cor-border);
+    color: var(--cor-text);
+    font-family: "Poppins", sans-serif;
+}
+
+.modal-fechar{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--cor-text);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-titulo{
+    color: red;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal-status{
+    align-self: flex-start;
+}
+
+.modal-data{
+    font-size: 12px;
+    color: gray;
+}
+
+.modal-itens{
+    list-style: none;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.modal-total{
+    color: var(--cor-text-amarelo);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* fim pedidos */
+
+/* badge do carrinho */
+.link-carrinho{
+    position: relative;
+    display: inline-block;
+}
+
+#badge-carrinho, #badge-pedidos{
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 11px;
+    background-color: rgb(255, 30, 0);
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 22px;
+    text-align: center;
+    pointer-events: none;
+}
+
+#badge-carrinho[hidden], #badge-pedidos[hidden]{
+    display: none;
+}
+
+
+/* ===== RESPONSIVO (tablet) ===== */
+@media (max-width: 1024px){
+    header{
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    #div-logo{
+        width: 200px;
+        height: 110px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    header ul{
+        margin-top: 0;
+        gap: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #barra-pesquisa{
+        width: 280px;
+        height: auto;
+        margin-top: 0;
+        padding: 12px 16px 12px 40px;
+    }
+    #svg-lup{
+        display: none;
+    }
+    #div-header{
+        width: auto;
+        margin-top: 0;
+    }
+    #troca{
+        margin: 0;
+    }
+    footer{
+        height: auto;
+        padding: 30px 20px;
+        background-size: cover;
+    }
+    #div-centro{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px 20px;
+    }
+    #esquerda-footer{
+        grid-column: 1 / -1;
+    }
+    #navegação, #contato{
+        margin: 0;
+    }
+    #div-logo2{
+        margin-left: 0;
+    }
+    #lista-pedidos{
+        width: 92%;
+    }
+}
+
+/* ===== RESPONSIVO (celular) ===== */
+@media (max-width: 768px){
+    header{
+        padding: 12px 15px;
+        gap: 12px;
+    }
+    #div-logo{
+        width: 150px;
+        height: 80px;
+    }
+    nav{
+        width: 100%;
+    }
+    header li{
+        font-size: 12px;
+    }
+    header ul{
+        gap: 12px 20px;
+    }
+    #barra-pesquisa{
+        width: 100%;
+        font-size: 14px;
+    }
+    #div-header{
+        gap: 10px;
+    }
+    #entrar1{
+        width: 70px;
+        font-size: 11px;
+    }
+    #cadastrar1{
+        width: 95px;
+        font-size: 11px;
+    }
+    #svg-carrinho{
+        width: 40px;
+    }
+    #troca{
+        width: 40px;
+        height: 36px;
+    }
+    #div-centro{
+        grid-template-columns: 1fr;
+    }
+    #div-logo2{
+        width: 200px;
+    }
+    #lista-pedidos{
+        width: 100%;
+    }
+    .resumo-pedidos{
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .resumo-item{
+        flex: 1 1 calc(50% - 6px);
+        padding: 16px 10px;
+    }
+    .resumo-item:last-child{
+        flex-basis: 100%;
+    }
+    .resumo-valor{
+        font-size: 20px;
+    }
+    .card-pedido{
+        padding: 20px 18px;
+    }
+    .pedido-topo, .pedido-rodape{
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .modal-conteudo{
+        padding: 24px 18px;
+    }
+}
+
+/* ===== MENU HAMBURGUER E BUSCA DO CABEÇALHO (ate 1024px) ===== */
+.busca-header{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.busca-header #svg-lup{
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    fill: gray;
+    pointer-events: none;
+}
+
+.busca-header #barra-pesquisa{
+    margin-top: 0;
+}
+
+.btn-menu{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 40px;
+    padding: 8px;
+    background-color: transparent;
+    border: 1px solid var(--cor-border);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-menu span{
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background-color: red;
+    transition: 0.3s ease;
+}
+
+.btn-menu.ativo span:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+}
+
+.btn-menu.ativo span:nth-child(2){
+    opacity: 0;
+}
+
+.btn-menu.ativo span:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+#troca{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px 22px;
+}
+
+@media (max-width: 1024px){
+    header{
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 12px 15px;
+        padding: 12px 20px;
+    }
+
+    #div-logo{
+        width: 180px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .btn-menu{
+        display: flex;
+    }
+
+    header nav{
+        display: none;
+        width: 100%;
+    }
+
+    header nav.aberto{
+        display: block;
+    }
+
+    header nav ul{
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin-top: 0;
+        padding: 10px 0;
+    }
+
+    header li{
+        font-size: 14px;
+    }
+
+    .busca-header{
+        width: 100%;
+        max-width: 360px;
+        order: 10;
+    }
+
+    .busca-header #barra-pesquisa{
+        width: 100%;
+        height: auto;
+        padding: 12px 16px 12px 46px;
+    }
+
+    #div-header{
+        width: auto;
+        margin-top: 0;
+        order: 9;
+    }
+
+    #troca{
+        margin: 0;
+        order: 8;
+    }
+
+    #svg-carrinho{
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
+    footer{
+        height: auto;
+        padding: 30px 20px;
+        background-size: cover;
+    }
+
+    #div-centro{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px 20px;
+    }
+
+    #esquerda-footer{
+        grid-column: 1 / -1;
+    }
+
+    #navegação, #contato{
+        margin: 0;
+    }
+
+    #div-logo2{
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px){
+    #div-centro{
+        grid-template-columns: 1fr;
+    }
+
+    #div-logo2{
+        width: 200px;
+    }
+
+    #div-logo{
+        width: 150px;
+        height: 84px;
+    }
+}
+
+/* ===== CABECALHO LOGO SEM CORTE ===== */
+#div-logo{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* ===== CONTEUDO PRINCIPAL ===== */
+main{
+    min-height: 58vh;
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+@media (max-width: 1024px){
+    main{
+        padding: 30px 16px;
+    }
+}
+
+@media (max-width: 768px){
+    main{
+        padding: 24px 12px;
+    }
+}
+
+
+/* ===== RODAPE RECOLHIVEL (celular) ===== */
+/* Em telas pequenas, NAVEGACAO e CONTATO abrem e fecham com uma seta */
+.footer-titulo-toggle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.footer-titulo-toggle .seta{
+    display: none;
+}
+
+@media (max-width: 768px){
+    footer{
+        background-image: none;
+        background-color: var(--cor-fundo);
+        border-top: 2px solid red;
+    }
+
+    .footer-titulo-toggle .seta{
+        display: block;
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        fill: red;
+        transition: transform 0.3s ease;
+    }
+
+    .footer-secao.aberto .footer-titulo-toggle .seta{
+        transform: rotate(180deg);
+    }
+
+    .footer-secao .ul-footer > li,
+    .footer-secao .ul-footer > #tracinho{
+        display: none;
+    }
+
+    .footer-secao.aberto .ul-footer > li,
+    .footer-secao.aberto .ul-footer > #tracinho{
+        display: block;
+    }
+}
+
+/* ===== BARRA DE BUSCA DO CABEÇALHO (acima de 1024px): campo com altura fixa e lupa centralizada ===== */
+@media (min-width: 1025px){
+    #barra-pesquisa{
+        anchor-name: --busca-cabecalho;
+        align-self: center;
+        width: clamp(200px, 18vw, 320px);
+        height: 44px;
+        margin-top: 0;
+        padding: 0 16px 0 46px;
+        line-height: 44px;
+    }
+
+    #svg-lup{
+        position: absolute;
+        position-anchor: --busca-cabecalho;
+        top: anchor(center);
+        left: anchor(left);
+        translate: 16px -50%;
+        width: 22px;
+        height: 22px;
+        margin: 0;
+        pointer-events: none;
+    }
+}

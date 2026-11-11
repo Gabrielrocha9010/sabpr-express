@@ -387,3 +387,473 @@ footer::before {
     border-radius: 10px;
   }  
 
+
+.link-carrinho{
+    position: relative;
+    display: inline-block;
+}
+
+#badge-carrinho, #badge-pedidos{
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 11px;
+    background-color: rgb(255, 30, 0);
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 22px;
+    text-align: center;
+    pointer-events: none;
+}
+
+#badge-carrinho[hidden], #badge-pedidos[hidden]{
+    display: none;
+}
+
+
+/* ===== RESPONSIVO: CABEÇALHO E RODAPÉ (tablet) ===== */
+@media (max-width: 1024px){
+    header{
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    #div-logo{
+        width: 200px;
+        height: 110px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    header ul{
+        margin-top: 0;
+        gap: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #barra-pesquisa{
+        width: 280px;
+        height: auto;
+        margin-top: 0;
+        padding: 12px 16px 12px 40px;
+    }
+    #div-header{
+        width: auto;
+        margin-top: 0;
+    }
+    #troca{
+        margin: 0;
+    }
+    footer{
+        height: auto;
+        padding: 30px 20px;
+        background-size: cover;
+    }
+    #div-centro{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px 20px;
+    }
+    #esquerda-footer{
+        grid-column: 1 / -1;
+    }
+    #navegação, #contato{
+        margin: 0;
+    }
+    #div-logo2{
+        margin-left: 0;
+    }
+}
+
+/* ===== RESPONSIVO: CABEÇALHO E RODAPÉ (celular) ===== */
+@media (max-width: 768px){
+    header{
+        padding: 12px 15px;
+        gap: 12px;
+    }
+    #div-logo{
+        width: 150px;
+        height: 80px;
+    }
+    nav{
+        width: 100%;
+    }
+    header ul{
+        gap: 12px 20px;
+    }
+    header li{
+        font-size: 12px;
+    }
+    #barra-pesquisa{
+        width: 100%;
+        font-size: 14px;
+    }
+    #div-header{
+        gap: 10px;
+    }
+    #entrar1{
+        width: 70px;
+        font-size: 11px;
+    }
+    #cadastrar1{
+        width: 95px;
+        font-size: 11px;
+    }
+    #svg-carrinho{
+        width: 40px;
+    }
+    #troca{
+        width: 40px;
+        height: 36px;
+    }
+    footer{
+        padding: 30px 20px;
+    }
+    #div-centro{
+        grid-template-columns: 1fr;
+    }
+    #div-logo2{
+        width: 200px;
+    }
+}
+
+/* ===== RESPONSIVO: INICIO (hero) ===== */
+/* A imagem ocupa a largura da tela e a altura segue a proporcao dela (2752x1536).
+   Textos e botao usam unidades relativas a largura (cqw), entao tudo diminui
+   junto com a tela e continua no mesmo lugar sobre a imagem.
+   Valores em cqw = px de referencia de 1920px de largura / 19.2 */
+#principio{
+    height: auto;
+    min-height: 0;
+    container-type: inline-size;
+}
+
+#img-principio{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2752 / 1536;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+#span-paragrafo{
+    top: 28%;
+    left: 3%;
+    font-size: max(0.7rem, 0.83cqw);
+}
+
+#paragrafo-span{
+    top: 30.3%;
+    left: 3%;
+    font-size: max(0.7rem, 0.83cqw);
+}
+
+#paragrafo1{
+    top: 35%;
+    left: 3%;
+    font-size: 5cqw;
+}
+
+#paragrafo2{
+    top: 46%;
+    left: 3%;
+    font-size: 4.17cqw;
+}
+
+#paragrafo3{
+    top: 60%;
+    left: 3%;
+    width: 94%;
+    font-size: max(0.8rem, 1.67cqw);
+    line-height: 1.3;
+}
+
+#btn5{
+    top: 78%;
+    left: 3%;
+    width: max(15%, 120px);
+    height: max(2.8cqw, 36px);
+    font-size: max(0.75rem, 0.83cqw);
+}
+
+/* ===== MENU HAMBURGUER E BUSCA DO CABEÇALHO (ate 1024px) ===== */
+.busca-header{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.busca-header #svg-lup{
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    fill: gray;
+    pointer-events: none;
+}
+
+.busca-header #barra-pesquisa{
+    margin-top: 0;
+}
+
+.btn-menu{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 40px;
+    padding: 8px;
+    background-color: transparent;
+    border: 1px solid var(--cor-border);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-menu span{
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background-color: red;
+    transition: 0.3s ease;
+}
+
+.btn-menu.ativo span:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+}
+
+.btn-menu.ativo span:nth-child(2){
+    opacity: 0;
+}
+
+.btn-menu.ativo span:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+#troca{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 22px 22px;
+}
+
+@media (max-width: 1024px){
+    header{
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 12px 15px;
+        padding: 12px 20px;
+    }
+
+    #div-logo{
+        width: 180px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .btn-menu{
+        display: flex;
+    }
+
+    header nav{
+        display: none;
+        width: 100%;
+    }
+
+    header nav.aberto{
+        display: block;
+    }
+
+    header nav ul{
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin-top: 0;
+        padding: 10px 0;
+    }
+
+    header li{
+        font-size: 14px;
+    }
+
+    .busca-header{
+        width: 100%;
+        max-width: 360px;
+        order: 10;
+    }
+
+    .busca-header #barra-pesquisa{
+        width: 100%;
+        height: auto;
+        padding: 12px 16px 12px 46px;
+    }
+
+    #div-header{
+        width: auto;
+        margin-top: 0;
+        order: 9;
+    }
+
+    #troca{
+        margin: 0;
+        order: 8;
+    }
+
+    #svg-carrinho{
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
+    footer{
+        height: auto;
+        padding: 30px 20px;
+        background-size: cover;
+    }
+
+    #div-centro{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px 20px;
+    }
+
+    #esquerda-footer{
+        grid-column: 1 / -1;
+    }
+
+    #navegação, #contato{
+        margin: 0;
+    }
+
+    #div-logo2{
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px){
+    #div-centro{
+        grid-template-columns: 1fr;
+    }
+
+    #div-logo2{
+        width: 200px;
+    }
+
+    #div-logo{
+        width: 150px;
+        height: 84px;
+    }
+}
+
+
+/* ===== RODAPE RECOLHIVEL (celular) ===== */
+/* Em telas pequenas, NAVEGACAO e CONTATO abrem e fecham com uma seta */
+.footer-titulo-toggle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.footer-titulo-toggle .seta{
+    display: none;
+}
+
+@media (max-width: 768px){
+    footer{
+        background-image: none;
+        background-color: var(--cor-fundo);
+        border-top: 2px solid red;
+    }
+
+    .footer-titulo-toggle .seta{
+        display: block;
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        fill: red;
+        transition: transform 0.3s ease;
+    }
+
+    .footer-secao.aberto .footer-titulo-toggle .seta{
+        transform: rotate(180deg);
+    }
+
+    .footer-secao .ul-footer > li,
+    .footer-secao .ul-footer > #tracinho{
+        display: none;
+    }
+
+    .footer-secao.aberto .ul-footer > li,
+    .footer-secao.aberto .ul-footer > #tracinho{
+        display: block;
+    }
+}
+
+/* ===== CABECALHO ENTRE 1025px E 1669px (desktop menor) ===== */
+/* Mantem tudo em uma linha: logo, menu, busca e botoes nao encolhem nem quebram */
+@media (min-width: 1025px){
+    header{
+        flex-wrap: nowrap;
+        gap: clamp(10px, 1.2vw, 30px);
+    }
+
+    header ul{
+        gap: clamp(12px, 1.6vw, 30px);
+    }
+
+    header > #div-logo{
+        flex-shrink: 0;
+        width: clamp(140px, 13vw, 300px);
+        height: clamp(60px, 6vw, 120px);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    header > .busca-header,
+    header > #div-header,
+    header > #troca{
+        flex-shrink: 0;
+    }
+
+    #barra-pesquisa{
+        width: clamp(190px, 13vw, 250px);
+    }
+}
+
+/* ===== CABECALHO ALINHADO AO CENTRO (desktop acima de 1025px) ===== */
+/* Zera as margens antigas que empurravam cada item para uma altura diferente */
+@media (min-width: 1025px){
+    header{
+        align-items: center;
+    }
+
+    header ul{
+        margin-top: 0;
+    }
+
+    #div-header,
+    #troca,
+    #barra-pesquisa,
+    .busca-header #barra-pesquisa{
+        margin-top: 0;
+    }
+
+    #svg-carrinho{
+        margin-bottom: 0;
+    }
+}

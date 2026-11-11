@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="produto.css">
     <link rel="icon" href="img/file_000000005f94820e821ab0b92696a6a4.png">
     <link href="https://fonts.googleapis.com/css2?family=Idiqlat:wght@200;300;400&display=swap" rel="stylesheet">
@@ -13,6 +13,7 @@
 <body>
     <header>
         <div id="div-logo"></div>
+        <button id="btn-menu" class="btn-menu" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <nav>
             <ul>
                 <li class="list-menu"><a href="index.html">INÍCIO</a></li>
@@ -189,9 +190,10 @@
                     Sabor, qualidade respeito, sempre com você.</p>
             </div>
 
-            <div id="navegação">
+            <div id="navegação" class="footer-secao">
                 <ul class="ul-footer">
-                    <h3 id="titulo-footer">NAVEGAÇÃO</h3>
+                    <div class="footer-titulo-toggle" role="button" tabindex="0" aria-expanded="false">
+                    <h3 id="titulo-footer">NAVEGAÇÃO</h3><svg class="seta" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg></div>
                     <div id="tracinho"></div>
                     <li><a href="produto.html">Nossos habúmgueres</a></li>
                     <li><a href="perfil.html">Minha Conta</a></li>
@@ -199,9 +201,10 @@
                     <li><a href="carrinho.html">Carrinho</a></li>
                 </ul>
             </div>
-            <div id="contato">
+            <div id="contato" class="footer-secao">
                 <ul class="ul-footer">
-                    <h3 id="titulo-footer">CONTATO</h3>
+                    <div class="footer-titulo-toggle" role="button" tabindex="0" aria-expanded="false">
+                    <h3 id="titulo-footer">CONTATO</h3><svg class="seta" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg></div>
                     <div id="tracinho"></div>
                     <li id="teste1">Belo Horizonte - MG <br> <span id="baixinho">(Atendimento na região)</span></li>
                     <li id="teste2">(31) 99999-9999 <br> <span id="baixinho">Seg a Dom - 18h ás 00h</span></li>
