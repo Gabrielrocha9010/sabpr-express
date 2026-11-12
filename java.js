@@ -1,19 +1,17 @@
 const dark = document.getElementById("troca");
 
-// 1. Ao carregar a página, verifica se o usuário já tinha escolhido o modo escuro antes
+
 if (localStorage.getItem("tema") === "dark") {
     document.body.classList.add("dark");
 }
 
-// 2. Escuta o clique no botão para alternar o tema e salvar a preferência
 dark.addEventListener("click", function() {
     document.body.classList.toggle("dark");
     
-    // Se a classe "dark" foi adicionada, salva no localStorage. Se foi removida, tira de lá.
     if (document.body.classList.contains("dark")) {
         localStorage.setItem("tema", "dark");
     } else {
-        localStorage.removeItem("tema"); // ou localStorage.setItem("tema", "light");
+        localStorage.removeItem("tema");
     }
 });
 
@@ -72,23 +70,16 @@ const p1 = document.getElementById("paragrafo1");
     if (p2) p2.textContent = "";
     if (p1 && p2) window.onload = digitarP1;
 
-
-/* ===== PÁGINA DE PEDIDOS ===== */
-
-// Camada de dados dos pedidos.
-// Enquanto não existe banco, os pedidos ficam no localStorage do navegador.
-// Quando o banco estiver pronto, troque o corpo de cada método pela chamada à API (fetch),
-// mantendo os mesmos nomes. O restante da página não precisa mudar.
 const PedidosService = {
     chave: "pedidos",
 
     async listar() {
-        // Com banco: return (await fetch("/api/pedidos")).json();
+        
         return JSON.parse(localStorage.getItem(this.chave) || "[]");
     },
 
     async salvar(pedido) {
-        // Com banco: fazer POST em /api/pedidos com o pedido no corpo
+        
         const pedidos = await this.listar();
         pedidos.push(pedido);
         localStorage.setItem(this.chave, JSON.stringify(pedidos));
@@ -96,8 +87,7 @@ const PedidosService = {
     }
 };
 
-// Chame esta função ao finalizar uma compra. Exemplo:
-// criarPedido([{ nome: "Combo Titã", quantidade: 2, preco: 40 }], 80);
+
 async function criarPedido(itens, total) {
     const pedidos = await PedidosService.listar();
     const sessao = SessaoService.atual();
@@ -130,7 +120,7 @@ function formatarData(iso) {
 
 document.addEventListener("DOMContentLoaded", async function () {
     const area = document.getElementById("lista-cards");
-    if (!area) return; // não está na página de pedidos
+    if (!area) return; 
 
     const botoesFiltro = document.querySelectorAll(".btn-filtro");
     const valoresResumo = document.querySelectorAll(".resumo-valor");
@@ -142,13 +132,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         "CANCELADOS": "cancelado"
     };
 
-    // Cada conta vê só os próprios pedidos
+   
     const sessaoAtual = SessaoService.atual();
     const emailLogado = sessaoAtual ? sessaoAtual.email : null;
     let pedidos = (await PedidosService.listar()).filter(p => emailLogado && p.usuarioEmail === emailLogado);
     let filtroAtual = "todos";
 
-    // Pedidos mais recentes primeiro, aplicando o filtro escolhido
+   
     function pedidosFiltrados() {
         const ordenados = [...pedidos].sort((a, b) => new Date(b.data) - new Date(a.data));
         return filtroAtual === "todos" ? ordenados : ordenados.filter(p => p.status === filtroAtual);
@@ -162,7 +152,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         valoresResumo[2].textContent = formatarMoeda(gasto);
     }
 
-    // Modal com os detalhes do pedido
+   
     const modal = document.createElement("div");
     modal.className = "modal-pedido oculto";
     modal.innerHTML = `
@@ -209,7 +199,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (e.key === "Escape") fecharModal();
     });
 
-    // Monta o card de um pedido usando as mesmas classes do CSS
+    
     function criarCard(pedido) {
         const st = STATUS_PEDIDO[pedido.status] || STATUS_PEDIDO.andamento;
         const card = document.createElement("article");
@@ -266,9 +256,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     render();
 });
 
-/* ===== CARRINHO ===== */
 
-// Carrinho guardado no localStorage até existir o banco de dados.
 const CarrinhoService = {
     chave: "carrinho",
 
@@ -280,7 +268,7 @@ const CarrinhoService = {
         localStorage.setItem(this.chave, JSON.stringify(itens));
     },
 
-    // Adiciona um produto. Se ele já estiver no carrinho, aumenta a quantidade.
+  
     adicionar(produto) {
         const itens = this.listar();
         const existente = itens.find(i => i.nome === produto.nome && i.preco === produto.preco);
@@ -301,7 +289,7 @@ const CarrinhoService = {
     }
 };
 
-// Mostra o número de itens ao lado do ícone do carrinho
+
 function atualizarBadgeCarrinho() {
     const badge = document.getElementById("badge-carrinho");
     if (!badge) return;
@@ -310,14 +298,13 @@ function atualizarBadgeCarrinho() {
     badge.hidden = quantidade === 0;
 }
 
-// Converte o texto do preço em número. Ex.: "R$14,00 e 12,00" vira 14
+
 function extrairPreco(texto) {
     const m = texto.match(/(\d+),(\d{2})/);
     return m ? parseFloat(m[1] + "." + m[2]) : 0;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Cria o contador no ícone do carrinho (em todas as páginas que têm o ícone)
     const svgCarrinho = document.getElementById("svg-carrinho");
     if (svgCarrinho) {
         const link = svgCarrinho.parentElement;
@@ -328,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
         atualizarBadgeCarrinho();
     }
 
-    // Página de produtos: "Adicionar" põe o item no carrinho e vai para a página do carrinho
+   
     document.querySelectorAll(".botton-add").forEach(function (btn) {
         btn.addEventListener("click", function (e) {
             e.preventDefault();
@@ -350,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function () {
     iniciarPaginaCarrinho();
 });
 
-// Número de pedidos em andamento ao lado do item PEDIDOS do menu
+
 async function atualizarBadgePedidos() {
     const link = document.querySelector('nav a[href="pedidos.html"]');
     if (!link) return;
