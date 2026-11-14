@@ -603,7 +603,6 @@ footer::before {
     background-color: gray;
 }
 
-/* ===== RESPONSIVO: CABEÇALHO E RODAPÉ (tablet) ===== */
 @media (max-width: 1024px){
     header{
         height: auto;
@@ -655,7 +654,6 @@ footer::before {
     }
 }
 
-/* ===== RESPONSIVO: PRODUTOS (tablet) ===== */
 @media (max-width: 1024px){
     #produtos-1{
         flex-direction: column;
@@ -727,7 +725,6 @@ footer::before {
     }
 }
 
-/* ===== RESPONSIVO: CABEÇALHO, RODAPÉ E PRODUTOS (celular) ===== */
 @media (max-width: 768px){
     header{
         padding: 12px 15px;
@@ -802,7 +799,6 @@ footer::before {
     }
 }
 
-/* ===== BEBIDAS: IMAGEM INTEIRA SEM CORTE ===== */
 #card-ham1 img[src*="coca"],
 #card-ham1 img[src*="pepsi"],
 #card-ham1 img[src*="SUCO"],
@@ -821,7 +817,6 @@ footer::before {
     object-fit: contain;
 }
 
-/* ===== MENU HAMBURGUER E BUSCA DO CABEÇALHO (ate 1024px) ===== */
 .busca-header{
     position: relative;
     display: flex;
@@ -996,8 +991,6 @@ footer::before {
     }
 }
 
-/* ===== RODAPE RECOLHIVEL (celular) ===== */
-/* Em telas pequenas, NAVEGACAO e CONTATO abrem e fecham com uma seta */
 .footer-titulo-toggle{
     display: flex;
     justify-content: space-between;
@@ -1041,8 +1034,6 @@ footer::before {
     }
 }
 
-/* ===== CABECALHO DA PRODUTO EM TELAS ACIMA DE 1024px ===== */
-/* Logo inteiro, busca alinhada e todos os itens centralizados na mesma linha */
 @media (min-width: 1025px){
     header{
         height: auto;
