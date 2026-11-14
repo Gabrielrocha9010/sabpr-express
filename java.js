@@ -354,7 +354,7 @@ async function atualizarBadgePedidos() {
     badge.hidden = emAndamento === 0;
 }
 
-// Página do carrinho (carrinho.html)
+
 function iniciarPaginaCarrinho() {
     const lista = document.getElementById("lista-carrinho");
     if (!lista) return;
@@ -425,7 +425,6 @@ function iniciarPaginaCarrinho() {
         atualizarBadgeCarrinho();
     }
 
-    // Botões de quantidade e remover (delegação de eventos)
     lista.addEventListener("click", function (e) {
         const btn = e.target.closest("[data-acao]");
         if (!btn) return;
@@ -446,12 +445,10 @@ function iniciarPaginaCarrinho() {
         render();
     });
 
-    // Finaliza: cria o pedido, esvazia o carrinho e mostra os pedidos
     btnFinalizar.addEventListener("click", async function () {
         const itens = CarrinhoService.listar();
         if (itens.length === 0) return;
 
-        // Só quem está cadastrado e logado pode comprar
         if (!SessaoService.atual()) {
             window.location.href = "entrar.html?voltar=carrinho.html";
             return;
@@ -480,10 +477,6 @@ function iniciarPaginaCarrinho() {
     render();
 }
 
-/* ===== CADASTRO ===== */
-
-// Usuários guardados no localStorage até existir o banco de dados.
-// Quando o banco estiver pronto, troque o corpo de listar() e salvar() por chamadas à API.
 const UsuarioService = {
     chave: "usuarios",
 
@@ -499,29 +492,27 @@ const UsuarioService = {
     }
 };
 
-// Máscara do CEP: 30100-000
 function mascaraCep(valor) {
     const d = valor.replace(/\D/g, "").slice(0, 8);
     if (d.length <= 5) return d;
     return d.slice(0, 5) + "-" + d.slice(5);
 }
 
-// UF: só duas letras maiúsculas
 function mascaraUf(valor) {
     return valor.replace(/[^a-zA-Z]/g, "").slice(0, 2).toUpperCase();
 }
 
-// Número do endereço: só dígitos
+
 function mascaraNumero(valor) {
     return valor.replace(/\D/g, "").slice(0, 6);
 }
 
-// Nome: só letras (com acentos) e espaços
+
 function mascaraNome(valor) {
     return valor.replace(/[^a-zA-ZÀ-ÿ ]/g, "");
 }
 
-// Formata o telefone enquanto o usuário digita: (31) 99999-9999
+
 function mascaraTelefone(valor) {
     const d = valor.replace(/\D/g, "").slice(0, 11);
     if (d.length === 0) return "";
@@ -535,7 +526,7 @@ function validarEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// Retorna a mensagem de erro do primeiro campo inválido, ou "" se estiver tudo certo
+
 function validarCadastro(dados) {
     if (dados.nome.length < 3) return "Informe seu nome completo.";
     if (!validarEmail(dados.email)) return "Informe um e-mail válido.";
@@ -552,14 +543,13 @@ function validarCadastro(dados) {
     return "";
 }
 
-// Gera o hash SHA-256 da senha. Só o hash é guardado, nunca o texto da senha.
+
 async function hashSenha(senha) {
     const bytes = new TextEncoder().encode(senha);
     const digest = await crypto.subtle.digest("SHA-256", bytes);
     return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, "0")).join("");
 }
 
-// Usuário logado nesta sessão do navegador (sem a senha)
 const SessaoService = {
     chave: "usuarioLogado",
     atual() {
@@ -580,11 +570,10 @@ document.addEventListener("DOMContentLoaded", function () {
     iniciarBotaoSair();
 });
 
-// Logado: esconde CADASTRAR e troca ENTRAR por SAIR. Sem login, mantém os dois botões.
 function iniciarBotaoSair() {
     const entrar = document.getElementById("entrar1");
     const cadastrar = document.getElementById("cadastrar1");
-    if (!entrar || !cadastrar) return; // página sem cabeçalho de conta
+    if (!entrar || !cadastrar) return; 
     if (!SessaoService.atual()) return;
 
     cadastrar.remove();
@@ -601,7 +590,7 @@ function iniciarBotaoSair() {
 
 function iniciarPaginaCadastro() {
     const form = document.getElementById("form-cadastro");
-    if (!form) return; // não está na página de cadastro
+    if (!form) return;
 
     const msg = document.getElementById("msg-cadastro");
 
@@ -610,12 +599,9 @@ function iniciarPaginaCadastro() {
         msg.className = "msg-cadastro " + tipo;
     }
 
-    // Máscara do telefone enquanto digita
     form.telefone.addEventListener("input", function (e) {
         e.target.value = mascaraTelefone(e.target.value);
     });
-
-    // Máscaras dos demais campos enquanto digita
     const mascaras = {
         nome: mascaraNome,
         cep: mascaraCep,
@@ -659,7 +645,6 @@ function iniciarPaginaCadastro() {
             return;
         }
 
-        // Guarda só o hash da senha, nunca o texto digitado
         UsuarioService.salvar({
             nome: dados.nome,
             email: dados.email,
@@ -676,11 +661,10 @@ function iniciarPaginaCadastro() {
 
 function iniciarPaginaLogin() {
     const form = document.getElementById("form-login");
-    if (!form) return; // não está na página de entrar
+    if (!form) return; 
 
     const msg = document.getElementById("msg-login");
 
-    // Só aceita voltar para o carrinho (evita redirecionar para outro site)
     const voltar = new URLSearchParams(window.location.search).get("voltar");
     if (voltar === "carrinho.html") {
         msg.textContent = "Entre ou cadastre-se para finalizar seu pedido.";
@@ -708,7 +692,6 @@ function iniciarPaginaLogin() {
         }
 
         const usuario = UsuarioService.listar().find(u => u.email === email);
-        // A mesma mensagem para e-mail ou senha errados, para não revelar quais contas existem
         if (!usuario || usuario.senhaHash !== await hashSenha(senha)) {
             mostrarMsg("E-mail ou senha incorretos.", "msg-erro");
             return;
@@ -723,12 +706,9 @@ function iniciarPaginaLogin() {
     });
 }
 
-/* ===== PERFIL ===== */
-
-// Mostra só os dados do usuário logado. Sem login, não mostra nenhuma informação.
 function iniciarPaginaPerfil() {
     const conteudo = document.getElementById("perfil-conteudo");
-    if (!conteudo) return; // não está na página de perfil
+    if (!conteudo) return; 
 
     const visitante = document.getElementById("perfil-visitante");
     const sessao = SessaoService.atual();
@@ -766,14 +746,10 @@ function iniciarPaginaPerfil() {
     document.getElementById("perfil-end-cidade").textContent = e.cidade ? e.cidade + " - " + e.uf : "-";
 }
 
-/* ===== BUSCA DE PRODUTOS ===== */
-
-// Remove acentos e maiúsculas para comparar o texto digitado com o nome do produto
 function normalizarBusca(texto) {
     return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 }
 
-// Mostra a mensagem de erro abaixo do cabeçalho. Texto vazio esconde a mensagem.
 let timerErroBusca = null;
 
 function mostrarErroBusca(texto) {
@@ -791,32 +767,26 @@ function mostrarErroBusca(texto) {
     }
 }
 
-// Destaca um card de produto e rola até ele
 function destacarProduto(card) {
     limparDestaques();
     card.classList.add("card-destaque");
     card.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-// Destaca a fileira inteira (ex.: bebidas) e rola até o início dela
 function irParaFileira(fileira) {
     limparDestaques();
     fileira.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-// Remove todos os destaques antigos antes de marcar um novo
 function limparDestaques() {
     document.querySelectorAll(".card-destaque").forEach(el => {
         el.classList.remove("card-destaque");
     });
 }
 
-// Procura primeiro nas fileiras (pelo id: habúmgueres, porções, bebidas) e depois nos nomes dos produtos.
-// Retorna true se encontrou algo.
 function buscarNosProdutos(termo) {
     const termoNormalizado = normalizarBusca(termo);
 
-    // Fileira com o nome exato tem prioridade; depois, nome que contenha o termo
     const fileiras = Array.from(document.querySelectorAll(".cards-direita"));
     const fileira = fileiras.find(f => normalizarBusca(f.id) === termoNormalizado) ||
         fileiras.find(f => normalizarBusca(f.id).includes(termoNormalizado));
@@ -847,7 +817,6 @@ function iniciarBuscaProdutos() {
     const barra = document.getElementById("barra-pesquisa");
     if (!barra) return;
 
-    // Só a página de produtos tem os cards; nas outras páginas a busca leva para ela
     const naPaginaProdutos = document.querySelector(".cards-di") !== null;
 
     barra.addEventListener("keydown", function (e) {
@@ -864,7 +833,6 @@ function iniciarBuscaProdutos() {
         }
     });
 
-    // Chegou da busca de outra página com ?busca=...
     if (naPaginaProdutos) {
         const termoUrl = new URLSearchParams(window.location.search).get("busca");
         if (termoUrl) {
@@ -876,10 +844,6 @@ function iniciarBuscaProdutos() {
 
 document.addEventListener("DOMContentLoaded", iniciarBuscaProdutos);
 
-/* ===== ESCOLHA DE TAMANHO (produtos com duas quantidades) ===== */
-
-// Lê os tamanhos e preços de um card. Ex.: "Coca-cola 2L e 1,5L" + "R$14,00 e 12,00"
-// Retorna [] se o card não tiver duas opções.
 function opcoesTamanho(card) {
     const tamanhos = card.querySelector("p").textContent.match(/\d+(?:,\d+)?\s?L\b/gi) || [];
     const precos = card.querySelector("h4").textContent.match(/\d+,\d{2}/g) || [];
@@ -892,7 +856,6 @@ function fecharEscolhaTamanho() {
     if (modal) modal.classList.add("oculto");
 }
 
-// Mostra a escolha de quantidade e manda o item escolhido para o carrinho
 function escolherTamanho(card, opcoes) {
     let modal = document.getElementById("modal-tamanho");
     if (!modal) {
@@ -940,10 +903,6 @@ function escolherTamanho(card, opcoes) {
     modal.classList.remove("oculto");
 }
 
-
-/* ===== BAIXAR CARRINHO EM JSON ===== */
-
-// Monta o carrinho.json com os itens e o total, e faz o download
 function baixarCarrinhoJson(itens, cliente, pedidoId) {
     const linhas = itens.map(function (i) {
         return {
@@ -962,7 +921,6 @@ function baixarCarrinhoJson(itens, cliente, pedidoId) {
         itens: linhas,
         total: Math.round(total * 100) / 100
     };
-
     const blob = new Blob([JSON.stringify(dados, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -973,9 +931,6 @@ function baixarCarrinhoJson(itens, cliente, pedidoId) {
     link.remove();
     URL.revokeObjectURL(url);
 }
-
-/* ===== MENU HAMBURGUER ===== */
-// Abre e fecha a lista do menu no celular/tablet
 document.addEventListener("DOMContentLoaded", function () {
     const btnMenu = document.getElementById("btn-menu");
     const nav = document.querySelector("header nav");
@@ -987,10 +942,6 @@ document.addEventListener("DOMContentLoaded", function () {
         btnMenu.setAttribute("aria-expanded", aberto);
     });
 });
-
-
-/* ===== RODAPE RECOLHIVEL (celular) ===== */
-// Abre e fecha NAVEGAÇÃO e CONTATO no rodapé ao tocar no título
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".footer-secao .footer-titulo-toggle").forEach(function (titulo) {
         function alternar() {
