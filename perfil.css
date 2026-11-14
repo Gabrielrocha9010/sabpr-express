@@ -472,7 +472,6 @@ main{
     color: gray;
 }
 
-/* ===== RESPONSIVO (tablet) ===== */
 @media (max-width: 1024px){
     header{
         height: auto;
@@ -538,7 +537,6 @@ main{
     }
 }
 
-/* ===== RESPONSIVO (celular) ===== */
 @media (max-width: 768px){
     header{
         padding: 12px 15px;
@@ -611,7 +609,6 @@ main{
     }
 }
 
-/* ===== MENU HAMBURGUER E BUSCA DO CABEÇALHO (ate 1024px) ===== */
 .busca-header{
     position: relative;
     display: flex;
@@ -784,14 +781,14 @@ main{
     }
 }
 
-/* ===== CABECALHO LOGO SEM CORTE ===== */
+
 #div-logo{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-/* ===== CONTEUDO PRINCIPAL ===== */
+
 main{
     min-height: 58vh;
     display: flex;
@@ -811,9 +808,6 @@ main{
     }
 }
 
-
-/* ===== RODAPE RECOLHIVEL (celular) ===== */
-/* Em telas pequenas, NAVEGACAO e CONTATO abrem e fecham com uma seta */
 .footer-titulo-toggle{
     display: flex;
     justify-content: space-between;
@@ -857,7 +851,6 @@ main{
     }
 }
 
-/* ===== BARRA DE BUSCA DO CABEÇALHO (acima de 1024px): campo com altura fixa e lupa centralizada ===== */
 @media (min-width: 1025px){
     #barra-pesquisa{
         anchor-name: --busca-cabecalho;
