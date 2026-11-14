@@ -416,7 +416,7 @@ footer::before {
 }
 
 
-/* ===== RESPONSIVO: CABEÇALHO E RODAPÉ (tablet) ===== */
+
 @media (max-width: 1024px){
     header{
         height: auto;
@@ -473,7 +473,7 @@ footer::before {
     }
 }
 
-/* ===== RESPONSIVO: CABEÇALHO E RODAPÉ (celular) ===== */
+
 @media (max-width: 768px){
     header{
         padding: 12px 15px;
@@ -525,11 +525,7 @@ footer::before {
     }
 }
 
-/* ===== RESPONSIVO: INICIO (hero) ===== */
-/* A imagem ocupa a largura da tela e a altura segue a proporcao dela (2752x1536).
-   Textos e botao usam unidades relativas a largura (cqw), entao tudo diminui
-   junto com a tela e continua no mesmo lugar sobre a imagem.
-   Valores em cqw = px de referencia de 1920px de largura / 19.2 */
+
 #principio{
     height: auto;
     min-height: 0;
@@ -584,7 +580,6 @@ footer::before {
     font-size: max(0.75rem, 0.83cqw);
 }
 
-/* ===== MENU HAMBURGUER E BUSCA DO CABEÇALHO (ate 1024px) ===== */
 .busca-header{
     position: relative;
     display: flex;
@@ -757,9 +752,6 @@ footer::before {
     }
 }
 
-
-/* ===== RODAPE RECOLHIVEL (celular) ===== */
-/* Em telas pequenas, NAVEGACAO e CONTATO abrem e fecham com uma seta */
 .footer-titulo-toggle{
     display: flex;
     justify-content: space-between;
@@ -803,8 +795,7 @@ footer::before {
     }
 }
 
-/* ===== CABECALHO ENTRE 1025px E 1669px (desktop menor) ===== */
-/* Mantem tudo em uma linha: logo, menu, busca e botoes nao encolhem nem quebram */
+
 @media (min-width: 1025px){
     header{
         flex-wrap: nowrap;
@@ -835,8 +826,6 @@ footer::before {
     }
 }
 
-/* ===== CABECALHO ALINHADO AO CENTRO (desktop acima de 1025px) ===== */
-/* Zera as margens antigas que empurravam cada item para uma altura diferente */
 @media (min-width: 1025px){
     header{
         align-items: center;
